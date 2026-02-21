@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Login</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="images/icon.png">
+
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+
+        <div id="main">
+
+            <section>
+
+
+                <div class="container login-container">
+
+
+                    <!-- EMAIL -->
+
+                    <input type="email"
+                           id="email"
+                           class="search-bar"
+                           placeholder="Email">
+
+
+
+                    <!-- PASSWORD -->
+
+                    <input type="password"
+                           id="password"
+                           class="search-bar"
+                           placeholder="Password">
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button class="btn category-btn"
+                            id="loginBtn">
+
+                        Login
+
+                    </button>
+
+
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <script type="module">
+
+        import app from "./firebase.js";
+
+        import {
+            getAuth,
+            signInWithEmailAndPassword
+        }
+            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+
+        const auth = getAuth(app);
+
+
+        document
+            .getElementById("loginBtn")
+            .addEventListener("click", function () {
+
+
+                const email =
+                    document.getElementById("email").value;
+
+
+                const password =
+                    document.getElementById("password").value;
+
+
+
+                signInWithEmailAndPassword(auth, email, password)
+
+                    .then(() => {
+
+                        window.location.href = "s.html";
+
+                    })
+
+                    .catch(() => {
+
+                        alert("Login failed");
+
+                    });
+
+
+            });
+
+    </script>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="login.js"></script>
+</body>
+
+</html>

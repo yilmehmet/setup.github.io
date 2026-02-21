@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>CLOUD | Login</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="images/icon.png">
+
+</head>
+
+<body>
+
+
+    <div id="wrapper">
+
+        <div id="main">
+
+            <section>
+
+                <div class="container login-container">
+
+
+                    <!-- EMAIL -->
+
+                    <input type="email"
+                           id="email"
+                           class="search-bar"
+                           placeholder="Email">
+
+
+
+                    <!-- PASSWORD -->
+
+                    <input type="password"
+                           id="password"
+                           class="search-bar"
+                           placeholder="Password">
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button class="btn category-btn"
+                            id="loginBtn">
+
+                        Login
+
+                    </button>
+
+
+                    <!-- ERROR TEXT -->
+
+                    <p id="error"
+                       style="color:red; margin-top:10px;"></p>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FIREBASE LOGIN SCRIPT -->
+
+    <script type="module">
+
+
+        import { initializeApp }
+            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+
+
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            onAuthStateChanged
+        }
+            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyDrZ1IbQz6F2wimjKrlnFTbMFGm2nzVpnE",
+
+            authDomain: "setup-login-system.firebaseapp.com",
+
+            projectId: "setup-login-system",
+
+            storageBucket: "setup-login-system.firebasestorage.app",
+
+            messagingSenderId: "925202257372",
+
+            appId: "1:925202257372:web:198cd9840e035c90762b19"
+
+        };
+
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+
+        // LOGIN BUTTON
+
+
+        document.getElementById("loginBtn")
+
+            .addEventListener("click", function () {
+
+
+                const email =
+                    document.getElementById("email").value;
+
+
+                const password =
+                    document.getElementById("password").value;
+
+
+                signInWithEmailAndPassword(auth, email, password)
+
+
+                    .then(() => {
+
+                        window.location.href = "setup.html";
+
+                    })
+
+
+                    .catch(error => {
+
+                        document.getElementById("error").innerText =
+                            "Login Failed";
+
+                    });
+
+
+            });
+
+
+
+    </script>
+
+
+</body>
+
+</html>
