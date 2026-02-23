@@ -360,56 +360,9 @@
 
     <script type="module">
 
-        /* FIREBASE IMPORT */
-
-        import { initializeApp }
-            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-
-        import {
-            getAuth,
-            onAuthStateChanged
-        }
-            from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
-
-
-        /* FIREBASE CONFIG */
-
-        const firebaseConfig = {
-
-            apiKey: "AIzaSyDrZ1IbQz6F2wimjKrlnFTbMFGm2nzVpnE",
-
-            authDomain: "setup-login-system.firebaseapp.com",
-
-            projectId: "setup-login-system",
-
-            appId: "APP_ID"
-
-        };
-
-
-        /* INITIALIZE FIREBASE */
-
-        const app = initializeApp(firebaseConfig);
-
-        const auth = getAuth(app);
-
-
-        /* AUTH CHECK */
-
-        onAuthStateChanged(auth, (user) => {
-
-            if (!user) {
-
-                /* REDIRECT LOGIN */
-
-                window.location.href = "login.html";
-
-            }
-
-        });
-
     </script>
 
 </body>
 
 </html>
+
